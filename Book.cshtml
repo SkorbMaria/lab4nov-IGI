@@ -1,0 +1,93 @@
+﻿@model IEnumerable<IGI_5.Models.Book>
+@{
+    ViewData["Title"] = "Books";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h2>Books</h2>
+
+<p>
+    <a asp-controller="User" asp-action="AddBook">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="ID"> @Html.DisplayNameFor(model => model.ID)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Name"> @Html.DisplayNameFor(model => model.Name)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Cypher"> @Html.DisplayNameFor(model => model.Cypher)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Date"> @Html.DisplayNameFor(model => model.Date)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Price"> @Html.DisplayNameFor(model => model.Price)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Sell"> @Html.DisplayNameFor(model => model.Sell)</a>
+            </th>
+            <th>
+                <a asp-action="Book" asp-route-page="@ViewBag.PageViewModel.PageNumber" asp-route-sort="Fee"> @Html.DisplayNameFor(model => model.Fee)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cypher)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sell)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fee)
+                </td>
+                <td>
+                    <a asp-controller="User" asp-action="EditBook" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-controller="User" asp-action="RemoveBook" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (ViewBag.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Book" asp-route-page="@(ViewBag.PageViewModel.PageNumber - 1)" class="btn btn-default btn">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (ViewBag.PageViewModel.HasNextPage)
+{
+    <a asp-action="Book" asp-route-page="@(ViewBag.PageViewModel.PageNumber + 1)" class="btn btn-default btn">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
+
+<form asp-action="Book">
+    <input type="number" name="filter" value="@ViewBag.Filter" class="form-control" style="max-width: 230px" />
+    <input type="submit" value="Filter by price (more than)" class="btn btn-default" />
+</form>

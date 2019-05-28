@@ -1,0 +1,47 @@
+﻿@model IGI_5.Models.Order
+
+@{
+    ViewData["Title"] = "AddOrder";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h2>AddOrder</h2>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RecieveDate" class="control-label"></label>
+                <input type="date" asp-for="RecieveDate" class="form-control" />
+                <span asp-validation-for="RecieveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CompleteDate" class="control-label"></label>
+                <input type="checkbox" asp-for="CompleteDate" class="form-control" />
+                <span asp-validation-for="CompleteDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book" class="control-label"></label>
+                @Html.DropDownList("Books", new SelectList(ViewBag.Books), null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Customer" class="control-label"></label>
+                @Html.DropDownList("Customers", new SelectList(ViewBag.Customers), null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="/Home/Order">Back to List</a>
+</div>
+

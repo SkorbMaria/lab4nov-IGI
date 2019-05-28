@@ -1,0 +1,55 @@
+﻿@model IGI_5.Models.Contract
+
+@{
+    ViewData["Title"] = "RemoveContract";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h2>RemoveContract</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Contract</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateStart)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Term)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Term)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Book.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Autor.About)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Autor.About)
+        </dd>
+    </dl>
+
+    <form asp-action="RemoveContracts">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a href="/Home/Contract">Back to List</a>
+    </form>
+</div>

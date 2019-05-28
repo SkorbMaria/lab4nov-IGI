@@ -1,0 +1,48 @@
+﻿@model IGI_5.Models.Contract
+
+@{
+    ViewData["Title"] = "EditContract";
+}
+
+<br />
+<br />
+<br />
+<br />
+<h2>EditContract</h2>
+
+<h4>Contract</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditContract">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="DateStart" class="control-label"></label>
+                <input type="date" asp-for="DateStart" class="form-control" />
+                <span asp-validation-for="DateStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Term" class="control-label"></label>
+                <input type="checkbox" asp-for="Term" class="form-control" />
+                <span asp-validation-for="Term" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Book" class="control-label"></label>
+                @Html.DropDownList("Books", new SelectList(ViewBag.Books), null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                @Html.DropDownList("Autors", new SelectList(ViewBag.Autors), null, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="/Home/Contract">Back to List</a>
+</div>
+
